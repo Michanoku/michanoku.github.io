@@ -24,14 +24,14 @@
     <h1>Mario Kart Random Item</h1>
     <button onclick="showRandomImage()">Get Item</button>
     <br>
-    <img id="randomImage" src="images/question_box.png" alt="Random Item">
+    <img id="randomImage" src="item_box.png" alt="Random Item">
 
     <script>
         const images = [
-            { url: "images/red_shell.png", weight: 15 },  // 15% chance
-            { url: "images/green_shell.png", weight: 25 }, // 25% chance
-            { url: "images/mushroom.png", weight: 25 },   // 25% chance
-            { url: "images/banana.png", weight: 35 }     // 35% chance
+            { url: "red_shell.png", weight: 15 },  // 15% chance
+            { url: "green_shell.png", weight: 25 }, // 25% chance
+            { url: "mushroom.png", weight: 25 },   // 25% chance
+            { url: "banana.png", weight: 35 }     // 35% chance
         ];
 
         function showRandomImage() {

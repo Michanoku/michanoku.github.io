@@ -24,7 +24,7 @@
         <div class="flex-grow-1">
             <img class="img-fluid" id="randomImage" src="item_box.png" alt="Random Item" style="max-height: 50vh; max-width: 25vw;">
         </div>
-        <div class="flex-auto d-flex flex-row justify-content-center gap-5 w-100">
+        <div class="flex-auto d-flex flex-row justify-content-center gap-5 w-75">
             <button class="btn btn-lg btn-primary fw-bold w-100" onclick="showRandomImage()" style="font-size: 70px;">Get Item</button>
             <button class="btn btn-lg btn-primary fw-bold w-100" onclick="resetToItemBox()" style="font-size: 70px;">Reset</button>
         </div>
@@ -37,6 +37,15 @@
             { url: "banana.png", weight: 35 }     // 35% chance
         ];
 
+        function preloadImages() {
+            images.forEach(img => {
+                const image = new Image();
+                image.src = img.url;
+            });
+            const itemBox = new Image();
+            questionBox.src = "item_box.png";
+        }
+        
         function showRandomImage() {
             let imgElement = document.getElementById("randomImage");
             imgElement.classList.add("spin"); // Start animation

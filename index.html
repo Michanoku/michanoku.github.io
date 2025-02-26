@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <title>Mario Kart Random Item</title>
-    <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        img { max-width: 150px; height: auto; margin-top: 20px; }
-        button { padding: 10px; font-size: 16px; cursor: pointer; }
-        
+    <style>  
         /* Animation effect */
         .spin {
             animation: spinEffect 0.5s linear infinite;
@@ -21,11 +19,15 @@
     </style>
 </head>
 <body>
-    <h1>Mario Kart Random Item</h1>
-    <button onclick="showRandomImage()">Get Item</button>
-    <br>
-    <img id="randomImage" src="item_box.png" alt="Random Item">
-
+    <div class="d-flex flex-column" style="height: 90vh;">
+        <h1 class="flex-auto">Item Box</h1>
+        <img class="flex-fill" id="randomImage" src="item_box.png" alt="Random Item">
+        <br>
+        <div class="flex-auto d-flex flex-row justify-content-center gap-5">
+            <button class="btn btn-lg btn-primary" onclick="showRandomImage()">Get Item</button>
+            <button class="btn btn-lg btn-primary" onclick="resetToItemBox()">Reset</button>
+        </div>
+    </div>
     <script>
         const images = [
             { url: "red_shell.png", weight: 15 },  // 15% chance
@@ -37,7 +39,7 @@
         function showRandomImage() {
             let imgElement = document.getElementById("randomImage");
             imgElement.classList.add("spin"); // Start animation
-            imgElement.src = "images/question_box.png"; // Temporary spinning item
+            imgElement.src = "item_box.png"; // Temporary spinning item
 
             setTimeout(() => {
                 let totalWeight = images.reduce((sum, img) => sum + img.weight, 0);
@@ -53,6 +55,11 @@
                 }
                 imgElement.classList.remove("spin"); // Stop animation
             }, 1000); // 1-second delay for effect
+        }
+
+        function resetToItemBox() {
+            let imgElement = document.getElementById("randomImage");
+            imgElement.src = "item_box.png";
         }
     </script>
 </body>

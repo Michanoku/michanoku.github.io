@@ -19,14 +19,14 @@
     </style>
 </head>
 <body>
-    <div class="d-flex flex-column w-100 justify-content-center" style="height: 90vh;">
+    <div class="d-flex flex-column w-100 justify-content-center align-items-center" style="height: 90vh;">
         <div class="flex-auto display-1 fw-bold mb-5">Item Box</div>
         <div class="flex-grow-1 mb-5">
-            <img class="img-fluid w-50" id="randomImage" src="item_box.png" alt="Random Item">
+            <img id="randomImage" src="item_box.png" alt="Random Item" style="max-height: 50vh; max-width: 25vw;">
         </div>
         <div class="flex-auto d-flex flex-row justify-content-center gap-5 mb-5">
-            <button class="btn btn-lg btn-primary fw-bold" onclick="showRandomImage()" style="font-size: 100px;">Get Item</button>
-            <button class="btn btn-lg btn-primary fw-bold" onclick="resetToItemBox()" style="font-size: 100px;">Reset</button>
+            <button class="btn btn-lg btn-primary fw-bold w-100" onclick="showRandomImage()" style="font-size: 70px;">Get Item</button>
+            <button class="btn btn-lg btn-primary fw-bold w-100" onclick="resetToItemBox()" style="font-size: 70px;">Reset</button>
         </div>
     </div>
     <script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Kart Random Item</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        img { max-width: 150px; height: auto; margin-top: 20px; }
+        button { padding: 10px; font-size: 16px; cursor: pointer; }
+        
+        /* Animation effect */
+        .spin {
+            animation: spinEffect 0.5s linear infinite;
+        }
+
+        @keyframes spinEffect {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mario Kart Random Item</h1>
+    <button onclick="showRandomImage()">Get Item</button>
+    <br>
+    <img id="randomImage" src="images/question_box.png" alt="Random Item">
+
+    <script>
+        const images = [
+            { url: "images/red_shell.png", weight: 15 },  // 15% chance
+            { url: "images/green_shell.png", weight: 25 }, // 25% chance
+            { url: "images/mushroom.png", weight: 25 },   // 25% chance
+            { url: "images/banana.png", weight: 35 }     // 35% chance
+        ];
+
+        function showRandomImage() {
+            let imgElement = document.getElementById("randomImage");
+            imgElement.classList.add("spin"); // Start animation
+            imgElement.src = "images/question_box.png"; // Temporary spinning item
+
+            setTimeout(() => {
+                let totalWeight = images.reduce((sum, img) => sum + img.weight, 0);
+                let randomNum = Math.random() * totalWeight;
+                let cumulativeWeight = 0;
+                
+                for (let img of images) {
+                    cumulativeWeight += img.weight;
+                    if (randomNum < cumulativeWeight) {
+                        imgElement.src = img.url;
+                        break;
+                    }
+                }
+                imgElement.classList.remove("spin"); // Stop animation
+            }, 1000); // 1-second delay for effect
+        }
+    </script>
+</body>
+</html>
